@@ -7,9 +7,13 @@
 using namespace std;
 
 int dp[1005][1005];
+int dp0[1005][1005];
 
 void init() {
-    dp[2][2] = 0;
+    fill(begin(dp[2]), end(dp0[2]), 1);
+    for (int k = 0; k < 1001; ++k) {
+        dp0[k][2] = 1;
+    }
     dp[3][2] = 1;
     dp[2][3] = 1;
     dp[4][4] = -1;
@@ -21,6 +25,14 @@ void init() {
                 dp[i][j] = 0;
             else
                 dp[i][j] = -1;
+        }
+    }
+    for (int i = 3; i < 1001; ++i) {
+        for (int j = 3; j < 1001; ++j) {
+            if (dp0[i - 1][j] == -1 || dp0[i][j - 1] == -1 || dp0[i - 1][j - 1] == -1)
+                dp0[i][j] = 1;
+            else
+                dp0[i][j] = -1;
         }
     }
 }
@@ -36,11 +48,7 @@ int main() {
         int flag = 0;
         switch (c) {
             case 1: {
-                int sum = n + m;
-                if (sum % 2)
-                    flag = 1;
-                else
-                    flag = -1;
+                flag = dp0[n][m];
                 break;
             }
             case 2: {
@@ -75,6 +83,8 @@ int main() {
                     flag = 0;
                 break;
             }
+            default:
+                break;
         }
         switch (flag) {
             case 1:
@@ -85,6 +95,8 @@ int main() {
                 break;
             case 0:
                 cout << "D\n";
+                break;
+            default:
                 break;
         }
     }
