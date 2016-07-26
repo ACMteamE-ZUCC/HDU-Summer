@@ -26,13 +26,14 @@ int operator-(const point p1, const point p2) {
     sum += abs(p1.y - p2.y);
     return sum;
 }
-
 bool operator>(const point p1, const point p2) {
+#if 1
     if (p1.x == p2.x)
         return p1.y < p1.y;
     return p1.x < p2.x;
+#endif
+    return (p1.x + p1.y) < (p2.x + p2.y);
 }
-
 set<point> p;
 
 int main() {

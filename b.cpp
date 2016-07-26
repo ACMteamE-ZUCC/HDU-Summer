@@ -17,7 +17,7 @@ int imain(void)
 }
 int main(void)
 {
-	ios_base::sync_with_stdio(false);x
+	ios_base::sync_with_stdio(false);
 	while(cin>>n){
 		for(int i=1;i<=n;i++)
 			cin>>c[i];
