@@ -31,10 +31,14 @@ int main() {
                 break;
             }
             case 3: {
-                if (n == 2 && m == 1)
+                int n0 = n % 3;
+                int m0 = m % 3;
+                if (n0 == 2 && m0 == 1)
                     flag = 1;
-                else if (n == 1 && m == 2)
+                else if (n0 == 1 && m0 == 2)
                     flag = 1;
+                else if (n0 == 0 && m0 == 0)
+                    flag = -1;
                 else
                     flag = 0;
                 break;
