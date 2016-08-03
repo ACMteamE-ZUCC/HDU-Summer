@@ -12,7 +12,9 @@ int main(void)
 {
 	while(scanf("%d",&n)!=EOF){
 		unordered_map<int,int> ma;
+		unordered_map<int,int> ma2;
 		ll sumr=0;
+		ll cnt=0;
 		ll ans=0;
 		rep(n) scanf("%d",&a[i-1]);
 		for(int i=0;i<n-1;i++){
@@ -22,16 +24,16 @@ int main(void)
 					ma[a[i]]++;
 					ma[a[j]]++;
 				}
-			}
-		}
-		for(int i=0;i<n-1;i++){
-			for(int j=i+1;j<n;j++){
-				int &ta=a[i];
-				int &tb=a[j];
-				if(ta<tb){
-					ans+=sumr-ma[ta]-ma[tb];
+				else{
+					cnt++;
+					ma2[a[i]]++;
+					ma2[a[j]]++;
 				}
 			}
+		}
+		ans=cnt*sumr;
+		for(auto it=ma2.begin();it!=ma2.end();it++){
+			ans-=ma[it->first]*(it->second);
 		}
 		cout<<ans<<'\n';
 	}

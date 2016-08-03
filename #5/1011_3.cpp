@@ -55,7 +55,7 @@ int Sum(int row,int col)
     for(int i=row;i>0;i-=lowbit(i))  
     for(int j=col;j>0;ans=(ans+t[i][j])%P,j-=lowbit(j));  
     return (int)ans;
-}  
+}
 int SSum(int i,int j){
 	ll ans=(ll)Sum(i,j)-Sum(0,j)-Sum(i,0)+Sum(0,0);
 	ans%=P;

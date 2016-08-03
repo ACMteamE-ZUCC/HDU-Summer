@@ -10,10 +10,11 @@ int a[MAX_N];
 //EndGlobalVar
 
 int LIS() {
-	static int s[MAX_N];
+	//static int s[MAX_N];
 	static int d[MAX_N];
-	memset(s, INF, sizeof(int)*n);
+	memset(d, INF, sizeof(d));
 	int ans = 0;
+	d[0]=-1;
 	for (int i = 0; i < n; i++) {
 		if (a[i] == 0) {
 			int ith=0;
@@ -29,11 +30,8 @@ int LIS() {
 		}
 		else {
 			int pos = lower_bound(d, d + n, a[i])-d;
-			if (d[pos] == a[i]) {
-				pos = pos - 1;
-			}
-			d[pos + 1] = min(d[pos + 1], a[i]);
-			ans = max(ans, pos + 1);
+			d[pos] = min(d[pos], a[i]);
+			ans = max(ans, pos);
 		}
 	}
 	return ans;
