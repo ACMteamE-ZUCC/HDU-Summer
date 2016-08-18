@@ -70,7 +70,9 @@ int main() {
                         } else
                             ans = a[l1 + mid - len3 + 1];
                     } else {
+                        if (mid <= len1) {
 
+                        }
                     }
                 }
             }
