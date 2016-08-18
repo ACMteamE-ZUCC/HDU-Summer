@@ -4,7 +4,7 @@ using namespace std;
 #define rep(n) for(int i=1;i<=(n);i++)
 #define mem(arr,n) memset(arr,n,sizeof(arr))
 const int INF=0x7f7f7f7f;
-
+typedef long long ll;
 //GlobalVar
 const int MAXN=100005;
 //EndGlobalVar
@@ -86,7 +86,7 @@ int main(void)
 				ans=se[lth/2+1];
 			}
 			else{
-				ans=(se[lth/2]+se[lth/2+1])/2.0;
+				ans=((ll)se[lth/2]+(ll)se[lth/2+1])/2.0;
 			}
 			printf("%.1f\n",ans);
 		}
